@@ -1,8 +1,11 @@
 import shodan
+import argparse
 
-SHODAN_API_KEY = "nWkRerEC30dmZpr4CzeqyKnPzqYTLFlZ"
+parser = argparse.ArgumentParser(description='API Shodan Search ')
+parser.add_argument('--key', '-k', help="Shodan API Key", required=True)
+args = parser.parse_args()
 
-api = shodan.Shodan(SHODAN_API_KEY)
+api = shodan.Shodan(args.key)
 
 "Dorks mais usados"
 '''
@@ -17,7 +20,7 @@ api = shodan.Shodan(SHODAN_API_KEY)
 
 try:
     # Buscar no Shodan
-    pesquisa = input("pesquisar:");
+    pesquisa = input("pesquisar:")
     results = api.search(pesquisa)
 
     # Mostrar os resultados
